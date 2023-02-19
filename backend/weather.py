@@ -1,10 +1,13 @@
+from pyowm.commons.exceptions import NotFoundError
 from pyowm import OWM
 import eel
+
+from config.config import load_config
 
 
 @eel.expose
 def get_weather(city):
-    owm = OWM('8afcf8ea6330577aaf06e872f0f01fba')
+    owm = OWM(load_config('.env').weather.token)
     mgr = owm.weather_manager()
     observation = mgr.weather_at_place(city)
     w = observation.weather
@@ -22,9 +25,9 @@ def get_weather(city):
         'wind': wi,
         'status': status
     }
+
     try:
         return weather_info
 
-    except:
+    except NotFoundError:
         pass
-
