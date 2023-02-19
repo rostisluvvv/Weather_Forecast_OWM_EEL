@@ -5,6 +5,7 @@ async function get_weather_info (){
         document.getElementById(key).innerHTML=value;
     }
 }
+
 document.getElementById("btncity").onclick = get_weather_info;
 
 

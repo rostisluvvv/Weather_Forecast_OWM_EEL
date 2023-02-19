@@ -11,7 +11,6 @@ def get_weather(city):
     temp = w.temperature('celsius')
     t1 = temp['temp']
     t2 = temp['feels_like']
-
     status = w.status
     wi = w.wind()['speed']
 
