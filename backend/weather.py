@@ -8,6 +8,7 @@ def get_weather(city):
     mgr = owm.weather_manager()
     observation = mgr.weather_at_place(city)
     w = observation.weather
+
     temp = w.temperature('celsius')
     t1 = temp['temp']
     t2 = temp['feels_like']
@@ -21,4 +22,9 @@ def get_weather(city):
         'wind': wi,
         'status': status
     }
-    return weather_info
+    try:
+        return weather_info
+
+    except:
+        pass
+
